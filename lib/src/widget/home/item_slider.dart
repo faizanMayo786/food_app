@@ -6,6 +6,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../core/util/custom_page_route.dart';
+import '../../model/item.dart';
+import '../../screens/item/item_detail_screen.dart';
+
 class ItemDealSlider extends StatefulWidget {
   ItemDealSlider({Key? key, required this.items}) : super(key: key);
   List items;
@@ -77,7 +81,35 @@ class ItemDealSliderState extends State<ItemDealSlider> {
                                   children: [
                                     SizedBox(
                                       width: 334,
-                                      child: buildImage(e.imageUrl, 0),
+                                      child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                              CustomPageRoute(
+                                                builder: MenuItemScreen(
+                                                  item: Item(
+                                                    id: widget
+                                                        .items[activeindex].id,
+                                                    name: widget
+                                                        .items[activeindex]
+                                                        .name,
+                                                    description: widget
+                                                        .items[activeindex]
+                                                        .description,
+                                                    imageUrl: widget
+                                                        .items[activeindex]
+                                                        .imageUrl,
+                                                    price: widget
+                                                        .items[activeindex]
+                                                        .price,
+                                                    status: widget
+                                                        .items[activeindex]
+                                                        .status,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: buildImage(e.imageUrl, 0)),
                                     ),
                                   ],
                                 );

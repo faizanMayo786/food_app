@@ -3,6 +3,8 @@ import 'package:food_app/src/blocs/coupon_bloc.dart';
 import 'package:provider/provider.dart';
 
 import '../../widget/inbox/coupon_tab.dart';
+import '../../widget/inbox/message_tab.dart';
+import '../../widget/inbox/promotion_tab.dart';
 
 // ignore: must_be_immutable
 class InboxScreen extends StatefulWidget {
@@ -47,7 +49,7 @@ class _InboxScreenState extends State<InboxScreen> {
           }
           return SingleChildScrollView(
             child: DefaultTabController(
-              length: 1,
+              length: 3,
               child: Column(
                 children: [
                   Padding(
@@ -73,15 +75,15 @@ class _InboxScreenState extends State<InboxScreen> {
                             ),
                             unselectedLabelColor: Colors.black,
                             tabs: const [
-                              // Tab(
-                              //   text: 'Messages',
-                              // ),
+                              Tab(
+                                text: 'Messages',
+                              ),
                               Tab(
                                 text: 'Coupons',
                               ),
-                              // Tab(
-                              //   text: 'Promotions',
-                              // )
+                              Tab(
+                                text: 'Promotions',
+                              )
                             ]);
                       }),
                     ),
@@ -114,9 +116,9 @@ class _InboxScreenState extends State<InboxScreen> {
                         onRefresh: getData,
                         child: TabBarView(
                           children: [
-                            // MessageTab(),
+                            MessageTab(),
                             CouponTab(coupon: coupon2),
-                            // PromotionTab(),
+                            PromotionTab(),
                           ],
                         ),
                       );
